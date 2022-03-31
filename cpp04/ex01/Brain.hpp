@@ -10,8 +10,9 @@ public:
 	~Brain();
 	Brain(Brain const & brain);
 	Brain & operator = (Brain const & brain);
+	std::string		getIdeas(int index) const;
 protected:
-	std::string	ideas[100];
+	std::string		ideas[100];
 };
 
 #endif

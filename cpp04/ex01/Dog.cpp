@@ -4,6 +4,7 @@ Dog::Dog()
 {
 	std::cout << "Dog default constructor was called" << std::endl;
 	type = "Dog";
+	brain = new Brain();
 }
 
 Dog::~Dog()
@@ -27,4 +28,10 @@ Dog & Dog::operator = (Dog const & dog)
 void	Dog::makeSound() const
 {
 	std::cout << type << " says woof woof..." << std::endl;
+}
+
+void	Dog::printIdeas() const
+{
+	for (int i = 0; i < 100; i++)
+		std::cout << brain->ideas[i] << std::endl;
 }

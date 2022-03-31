@@ -5,8 +5,9 @@
 
 int main()
 {
-	const Animal* j = new Dog();
+	const Dog* j = new Dog();
 	const Animal* i = new Cat();
+	j->printIdeas();
 	delete j;
 	delete i;
 	return 0;

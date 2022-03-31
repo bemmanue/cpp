@@ -29,3 +29,9 @@ void	Cat::makeSound() const
 {
 	std::cout << type << " says myau myau..." << std::endl;
 }
+
+void	Cat::printIdeas() const
+{
+	for (int i = 0; i < 100; i++)
+		std::cout << brain->ideas[i] << std::endl;
+}
