@@ -12,7 +12,7 @@ public:
 	Animal & operator = (Animal const & animal);
 
 	std::string 	getType() const;
-	virtual void	makeSound() const;
+	virtual void 	makeSound() const = 0;
 	virtual void	printIdeas() const;
 	virtual void	setIdeas(std::string idea);
 protected:
