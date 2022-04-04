@@ -11,7 +11,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << "PresidentialPardonForm destructor was called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string& target):
+PresidentialPardonForm::PresidentialPardonForm(std::string target):
 	target(target)
 {
 	std::cout << "PresidentialPardonForm default constructor was called" << std::endl;

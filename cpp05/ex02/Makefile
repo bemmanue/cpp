@@ -1,4 +1,4 @@
-NAME			=	bureaucrat
+NAME			=	form
 
 CC				=	c++
 
@@ -12,7 +12,7 @@ SRC				=	main.cpp					\
 					ShrubberyCreationForm.cpp
 
 OBJ				=	$(SRC:.cpp=.o)
-OBJ_DIR			:=	./objects/
+OBJ_DIR			=	./objects/
 OBJS			=	$(addprefix $(OBJ_DIR), $(OBJ))
 
 

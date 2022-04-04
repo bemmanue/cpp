@@ -11,7 +11,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "ShrubberyCreationForm destructor was called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string& target):
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
 		target(target)
 {
 	std::cout << "ShrubberyCreationForm default constructor was called" << std::endl;
@@ -31,4 +31,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void	ShrubberyCreationForm::action() const
 {
 	std::ofstream fout(target + "_shrubbery");
+	fout	<< "     ****" 			<< std::endl
+			<< "  ****** **"		<< std::endl
+			<< "*  ******** *"		<< std::endl
+			<< " **  ********"		<< std::endl
+			<< "*************"		<< std::endl
+			<< "  *********"		<< std::endl
+			<< "     ||"			<< std::endl
+			<< "     ||"			<< std::endl
+			<< "...!.!!.!.!..";
+
 }

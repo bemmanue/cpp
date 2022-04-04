@@ -11,7 +11,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << "RobotomyRequestForm destructor was called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string& target):
+RobotomyRequestForm::RobotomyRequestForm(std::string target):
 		target(target)
 {
 	std::cout << "RobotomyRequestForm default constructor was called" << std::endl;
