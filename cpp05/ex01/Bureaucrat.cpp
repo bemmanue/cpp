@@ -25,10 +25,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat):
 		name(bureaucrat.name),
 		grade(bureaucrat.grade)
 {
+	std::cout << "Bureaucrat copy constructor was called" << std::endl;
 }
 
-Bureaucrat & Bureaucrat::operator=(const Bureaucrat& bureaucrat)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 {
+	std::cout << "Bureaucrat assignation operator was called" << std::endl;
 	grade = bureaucrat.grade;
 	return *this;
 }
@@ -43,19 +45,28 @@ int	Bureaucrat::getGrade() const
 	return grade;
 }
 
-std::ostream & operator << (std::ostream &stream, const Bureaucrat & bureaucrat)
-{
-	return stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
-}
-
-const char * Bureaucrat::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("The grade is too high");
 }
 
-const char * Bureaucrat::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("The grade is too low");
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout	<< name << " signed " << form.getName() << std::endl;
+	}
+	catch (std::exception& error)
+	{
+		std::cout	<< name << " couldn't sign " << form.getName()
+					<< " because " << error.what();
+	}
 }
 
 Bureaucrat& Bureaucrat::operator++()
@@ -78,16 +89,9 @@ Bureaucrat& Bureaucrat::operator--()
 	return *this;
 }
 
-void	Bureaucrat::signForm(Form& form)
+std::ostream& operator << (std::ostream& stream, const Bureaucrat& bureaucrat)
 {
-	try
-	{
-		form.beSigned(*this);
-		std::cout	<< name << " signed " << form.getName() << std::endl;
-	}
-	catch (std::exception& error)
-	{
-		std::cout	<< name << " couldn't sign " << form.getName()
-					<< " because " << error.what();
-	}
+	return stream	<< "Bureaucrat: " << bureaucrat.getName()
+					 << ", bureaucrat grade: " << bureaucrat.getGrade();
 }
+

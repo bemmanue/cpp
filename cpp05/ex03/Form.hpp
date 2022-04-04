@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -29,7 +30,9 @@ public:
 	bool				getSign() const;
 	unsigned int		getGradeToSign() const;
 	unsigned int		getGradeToExecute() const;
-	void				beSigned(const Bureaucrat& bureaucrat);
+	virtual void		beSigned(const Bureaucrat& bureaucrat);
+	virtual void		action() const = 0;
+	virtual void		execute(Bureaucrat const& executor) const;
 private:
 	const std::string	name;
 	bool				sign;

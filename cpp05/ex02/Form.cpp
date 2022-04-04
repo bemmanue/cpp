@@ -84,7 +84,18 @@ Form&	Form::operator=(const Form &form)
 std::ostream& operator << (std::ostream& stream, const Form& form)
 {
 	return stream	<< form.getName()
-					 << (form.getSign() ? " is signed." : " is not signed.")
-					 << " Grade to sign: " << form.getGradeToSign()
-					 << ". Grade to execute: " << form.getGradeToExecute();
+					<< (form.getSign() ? " is signed." : " is not signed.")
+					<< " Grade to sign: " << form.getGradeToSign()
+					<< ". Grade to execute: " << form.getGradeToExecute();
+}
+
+void	Form::execute(const Bureaucrat& executor) const
+{
+	if (this->getSign())
+	{
+		if (executor.getGrade() <= grade_to_execute)
+			this->action();
+		else
+			throw Form::GradeTooLowException();
+	}
 }
