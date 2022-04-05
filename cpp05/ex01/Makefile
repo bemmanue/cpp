@@ -1,8 +1,8 @@
-NAME			=	bureaucrat
+NAME			=	form
 
 CC				=	c++
 
-FLAGS			=	 -Wall -Wextra -Werror -std=c++98
+FLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 SRC				=	main.cpp		\
 					Bureaucrat.cpp	\
@@ -11,7 +11,6 @@ SRC				=	main.cpp		\
 OBJ				=	$(SRC:.cpp=.o)
 OBJ_DIR			:=	./objects/
 OBJS			=	$(addprefix $(OBJ_DIR), $(OBJ))
-
 
 all:				$(NAME)
 

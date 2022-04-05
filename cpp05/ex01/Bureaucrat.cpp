@@ -3,12 +3,12 @@
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat destructor was called" << std::endl;
+	std::cout << WHITE << "Bureaucrat destructor was called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(): name("Unknown"), grade(0)
 {
-	std::cout << "Bureaucrat default constructor was called" << std::endl;
+	std::cout << WHITE << "Bureaucrat default constructor was called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): name(name)
@@ -17,7 +17,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade): name(name)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	std::cout << "Bureaucrat constructor was called" << std::endl;
+	std::cout << WHITE << "Bureaucrat constructor was called" << std::endl;
 	this->grade = grade;
 }
 
@@ -25,12 +25,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat):
 		name(bureaucrat.name),
 		grade(bureaucrat.grade)
 {
-	std::cout << "Bureaucrat copy constructor was called" << std::endl;
+	std::cout << WHITE << "Bureaucrat copy constructor was called" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 {
-	std::cout << "Bureaucrat assignation operator was called" << std::endl;
+	std::cout << WHITE << "Bureaucrat assignation operator was called" << std::endl;
 	grade = bureaucrat.grade;
 	return *this;
 }
@@ -60,12 +60,12 @@ void	Bureaucrat::signForm(Form& form)
 	try
 	{
 		form.beSigned(*this);
-		std::cout	<< name << " signed " << form.getName() << std::endl;
+		std::cout	<< GREEN << name << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception& error)
 	{
-		std::cout	<< name << " couldn't sign " << form.getName()
-					<< " because " << error.what();
+		std::cout	<< RED << name << " couldn't sign " << form.getName()
+					<< " because " << error.what() << std::endl;
 	}
 }
 
@@ -89,9 +89,9 @@ Bureaucrat& Bureaucrat::operator--()
 	return *this;
 }
 
-std::ostream& operator << (std::ostream& stream, const Bureaucrat& bureaucrat)
+std::ostream& operator<< (std::ostream& stream, const Bureaucrat& bureaucrat)
 {
-	return stream	<< "Bureaucrat: " << bureaucrat.getName()
-					 << ", bureaucrat grade: " << bureaucrat.getGrade();
+	return stream	<< WHITE << "Bureaucrat: " << bureaucrat.getName()
+					<< ", bureaucrat grade: " << bureaucrat.getGrade();
 }
 

@@ -1,30 +1,32 @@
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm():
-		target("Unknown")
+	Form("Shrubbery", 145, 137),
+	target("Unknown")
 {
-	std::cout << "ShrubberyCreationForm default constructor was called" << std::endl;
+	std::cout << WHITE << "ShrubberyCreationForm default constructor was called" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm destructor was called" << std::endl;
+	std::cout << WHITE << "ShrubberyCreationForm destructor was called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
-		target(target)
+	Form("Shrubbery", 145, 137),
+	target(target)
 {
-	std::cout << "ShrubberyCreationForm default constructor was called" << std::endl;
+	std::cout << WHITE << "ShrubberyCreationForm default constructor was called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& source)
 {
-	std::cout << "ShrubberyCreationForm copy constructor was called" << std::endl;
+	std::cout << WHITE << "ShrubberyCreationForm copy constructor was called" << std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& source)
 {
-	std::cout << "ShrubberyCreationForm assignation operator was called" << std::endl;
+	std::cout << WHITE << "ShrubberyCreationForm assignation operator was called" << std::endl;
 	return *this;
 }
 
@@ -40,5 +42,4 @@ void	ShrubberyCreationForm::action() const
 			<< "     ||"			<< std::endl
 			<< "     ||"			<< std::endl
 			<< "...!.!!.!.!..";
-
 }

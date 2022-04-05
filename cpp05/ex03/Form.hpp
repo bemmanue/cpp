@@ -26,6 +26,16 @@ public:
 	public:
 		const char* what() const throw();
 	};
+	class AlreadySignedException: public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
+	class UnsignedFormException: public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 	std::string			getName() const;
 	bool				getSign() const;
 	unsigned int		getGradeToSign() const;

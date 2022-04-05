@@ -7,12 +7,12 @@ Form::Form():
 	grade_to_sign(100),
 	grade_to_execute(100)
 {
-	std::cout << "Form default constructor was called" << std::endl;
+	std::cout << WHITE << "Form default constructor was called" << std::endl;
 }
 
 Form::~Form()
 {
-	std::cout << "Form destructor was called" << std::endl;
+	std::cout << WHITE << "Form destructor was called" << std::endl;
 }
 
 Form::Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_execute):
@@ -25,7 +25,7 @@ Form::Form(std::string name, unsigned int grade_to_sign, unsigned int grade_to_e
 		throw Form::GradeTooHighException();
 	if (grade_to_sign > 150 || grade_to_execute > 150)
 		throw Form::GradeTooLowException();
-	std::cout << "Form copy constructor was called" << std::endl;
+	std::cout << WHITE << "Form copy constructor was called" << std::endl;
 }
 
 Form::Form(const Form& form):
@@ -34,7 +34,7 @@ Form::Form(const Form& form):
 	grade_to_sign(form.grade_to_sign),
 	grade_to_execute(form.grade_to_execute)
 {
-	std::cout << "Form copy constructor was called" << std::endl;
+	std::cout << WHITE << "Form copy constructor was called" << std::endl;
 }
 
 const char* Form::GradeTooHighException::what() const throw()
@@ -46,6 +46,17 @@ const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("The grade is too low");
 }
+
+const char* Form::AlreadySignedException::what() const throw()
+{
+	return ("The form is already signed");
+}
+
+const char* Form::UnsignedFormException::what() const throw()
+{
+	return ("The form is unsigned yet");
+}
+
 
 std::string	Form::getName() const
 {
@@ -69,6 +80,8 @@ unsigned int	Form::getGradeToExecute() const
 
 void Form::beSigned(const Bureaucrat& bureaucrat)
 {
+	if (sign)
+		throw Form::AlreadySignedException();
 	if (bureaucrat.getGrade() <= grade_to_sign)
 		sign = true;
 	else
@@ -77,11 +90,11 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
 
 Form&	Form::operator=(const Form &form)
 {
-	std::cout << "Form assignation operator was called" << std::endl;
+	std::cout << WHITE << "Form assignation operator was called" << std::endl;
 	return *this;
 }
 
-std::ostream& operator << (std::ostream& stream, const Form& form)
+std::ostream& operator<< (std::ostream& stream, const Form& form)
 {
 	return stream	<< form.getName()
 					<< (form.getSign() ? " is signed." : " is not signed.")
@@ -98,4 +111,6 @@ void	Form::execute(const Bureaucrat& executor) const
 		else
 			throw Form::GradeTooLowException();
 	}
+	else
+		throw Form::UnsignedFormException();
 }

@@ -2,22 +2,22 @@
 
 Intern::Intern()
 {
-	std::cout << "Intern default constructor was called" << std::endl;
+	std::cout << WHITE << "Intern default constructor was called" << std::endl;
 }
 
 Intern::~Intern()
 {
-	std::cout << "Intern destructor was called" << std::endl;
+	std::cout << WHITE << "Intern destructor was called" << std::endl;
 }
 
 Intern::Intern(const Intern& intern)
 {
-	std::cout << "Intern copy constructor was called" << std::endl;
+	std::cout << WHITE << "Intern copy constructor was called" << std::endl;
 }
 
 Intern& Intern::operator=(const Intern& intern)
 {
-	std::cout << "Intern assignation operator was called" << std::endl;
+	std::cout << WHITE << "Intern assignation operator was called" << std::endl;
 	return *this;
 }
 
@@ -42,13 +42,17 @@ Form*	Intern::makeForm(std::string type, std::string target)
 	switch (defineType(type))
 	{
 		case 0:
+			std::cout << GREEN << "Intern creates PresidentialPardonForm" << std::endl;
 			return new PresidentialPardonForm(target);
 		case 1:
+			std::cout << GREEN << "Intern creates RobotomyRequestForm" << std::endl;
 			return new RobotomyRequestForm(target);
 		case 2:
+			std::cout << GREEN << "Intern creates ShrubberyCreationForm" << std::endl;
 			return new ShrubberyCreationForm(target);
 		case 3:
+			std::cout << RED << "Intern failes to create form because of unknown form name" << std::endl;
 			throw Intern::UnknownTypeException();
 	}
-	return NULL;
+	return nullptr;
 }

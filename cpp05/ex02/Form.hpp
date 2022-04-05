@@ -26,6 +26,16 @@ public:
 	public:
 		const char* what() const throw();
 	};
+	class AlreadySignedException: public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
+	class UnsignedFormException: public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 	std::string			getName() const;
 	bool				getSign() const;
 	unsigned int		getGradeToSign() const;
@@ -40,6 +50,6 @@ private:
 	const unsigned int	grade_to_execute;
 };
 
-std::ostream& operator << (std::ostream& stream, const Form& form);
+std::ostream& operator<< (std::ostream& stream, const Form& form);
 
 #endif

@@ -3,17 +3,39 @@
 
 int main()
 {
-	Form form("Form", 50, 50);
+	std::cout << WHITE << "-----------------------------------" << std::endl;
 	try
 	{
-		Bureaucrat	yulya("Yulya", 10);
-		yulya.signForm(form);
-		std::cout << form << std::endl;
-//		std::cout << yulya << std::endl;
+		Form form("Form", 50, 151);
 	}
 	catch (std::exception & error)
 	{
-		std::cout << error.what() << std::endl;
+		std::cout << RED << error.what() << std::endl;
 	}
+	std::cout << WHITE << "-----------------------------------" << std::endl;
+	try
+	{
+		Bureaucrat YulyaNikolavna("Yulya Nikolavna", 51);
+		Form form("Form", 50, 100);
+		YulyaNikolavna.signForm(form);
+		std::cout << BLUE << form << std::endl;
+	}
+	catch (std::exception & error)
+	{
+		std::cout << RED << error.what() << std::endl;
+	}
+	std::cout << WHITE << "-----------------------------------" << std::endl;
+	try
+	{
+		Bureaucrat VasilyIvanovich("Vasily Ivanovich", 50);
+		Form form("Form", 100, 100);
+		VasilyIvanovich.signForm(form);
+		std::cout << BLUE << form << std::endl;
+	}
+	catch (std::exception & error)
+	{
+		std::cout << RED << error.what() << std::endl;
+	}
+	std::cout << WHITE << "-----------------------------------" << std::endl;
 	return 0;
 }

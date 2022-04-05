@@ -31,7 +31,7 @@ clean:
 					@echo "\033[32m"clean DONE
 
 fclean:				clean
-					@rm -rf $(NAME)
+					@rm -rf $(NAME) *_shrubbery
 					@echo "\033[32m"fclean DONE
 
 re:					fclean all

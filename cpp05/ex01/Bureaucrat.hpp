@@ -5,6 +5,13 @@
 #include <exception>
 #include "Form.hpp"
 
+#define RED 	"[38;2;230;80;70m"
+#define BLUE 	"[38;2;120;150;200m"
+#define WHITE 	"[38;2;190;190;190m"
+#define YELLOW 	"[38;2;220;170;60m"
+#define VIOLET 	"[38;2;200;120;200m"
+#define GREEN 	"[38;2;110;160;40m"
+
 class Form;
 
 class Bureaucrat
@@ -35,6 +42,6 @@ private:
 	int					grade;
 };
 
-std::ostream& operator << (std::ostream& stream, const Bureaucrat& bureaucrat);
+std::ostream& operator<< (std::ostream& stream, const Bureaucrat& bureaucrat);
 
 #endif

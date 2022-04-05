@@ -1,38 +1,41 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm():
+	Form("Robotomy", 72, 45),
 		target("Unknown")
 {
-	std::cout << "RobotomyRequestForm default constructor was called" << std::endl;
+	std::cout << WHITE << "RobotomyRequestForm default constructor was called" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << "RobotomyRequestForm destructor was called" << std::endl;
+	std::cout << WHITE << "RobotomyRequestForm destructor was called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
+	Form("Robotomy", 72, 45),
 		target(target)
 {
-	std::cout << "RobotomyRequestForm default constructor was called" << std::endl;
+	std::cout << WHITE << "RobotomyRequestForm default constructor was called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& source)
 {
-	std::cout << "RobotomyRequestForm copy constructor was called" << std::endl;
+	std::cout << WHITE << "RobotomyRequestForm copy constructor was called" << std::endl;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& source)
 {
-	std::cout << "RobotomyRequestForm assignation operator was called" << std::endl;
+	std::cout << WHITE << "RobotomyRequestForm assignation operator was called" << std::endl;
 	return *this;
 }
 
 void	RobotomyRequestForm::action() const
 {
-	std::cout << "Drrr... drrr... drrr..." << std::endl;
+	std::cout << YELLOW << "Drrr... drrr... drrr..." << std::endl;
+	srand(time(nullptr));
 	if (rand() % 2 == 0)
-		std::cout << target << " has been robotomized succesfully" << std::endl;
+		std::cout << YELLOW << target << " has been robotomized succesfully" << std::endl;
 	else
-		std::cout << target << " failed to be robotomized " << std::endl;
+		std::cout << YELLOW << target << " failed to be robotomized " << std::endl;
 }
