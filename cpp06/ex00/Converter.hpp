@@ -40,6 +40,7 @@ public:
 
 	void		setValue(std::string value);
 	std::string	getValue() const;
+	std::string getType() const;
 	void		printConversionToChar() const;
 	void		printConversionToInt() const;
 	void		printConversionToFloat() const;

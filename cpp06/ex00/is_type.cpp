@@ -15,7 +15,7 @@ bool	is_int(const std::string value)
 		i++;
 	while (i < value.length())
 	{
-		if (!isdigit(value[i]) || i > 10)
+		if (!isdigit(value[i]))
 			return false;
 		i++;
 	}

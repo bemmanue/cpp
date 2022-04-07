@@ -16,11 +16,13 @@ Converter::~Converter()
 Converter::Converter(const Converter& converter)
 {
 	this->value = converter.getValue();
+	this->type = converter.type;
 }
 
 Converter& Converter::operator=(const Converter& converter)
 {
 	this->value = converter.getValue();
+	this->type = converter.type;
 	return *this;
 }
 
@@ -53,6 +55,20 @@ std::string	Converter::getValue() const
 	return value;
 }
 
+std::string	Converter::getType() const
+{
+	if (type == char_type)
+		return "char";
+	if (type == int_type)
+		return "int";
+	if (type == float_type)
+		return "float";
+	if (type == double_type)
+		return "double";
+	else
+		return "invalid";
+}
+
 void	Converter::setValue(std::string value)
 {
 	this->value = value;
@@ -64,17 +80,25 @@ Converter::operator char() const
 	if (type == char_type)
 		return value[0];
 	if (type == int_type)
+	{
+		if (!std::isprint(static_cast<char>(std::stoi(value))))
+			throw NonDisplayableException();
 		return static_cast<char>(std::stoi(value));
+	}
 	if (type == float_type)
 	{
 		if (value == "-inff" || value == "+inff" || value == "nanf")
 			throw ImpossibleException();
+		if (!std::isprint(static_cast<char>(std::stof(value))))
+			throw NonDisplayableException();
 		return static_cast<char>(std::stof(value));
 	}
 	if (type == double_type)
 	{
 		if (value == "-inf" || value == "+inf" || value == "nan")
 			throw ImpossibleException();
+		if (!std::isprint(static_cast<char>(std::stod(value))))
+			throw NonDisplayableException();
 		return static_cast<char>(std::stod(value));
 	}
 	else
