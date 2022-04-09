@@ -1,10 +1,12 @@
-NAME			=	whatever
+NAME			=	array
 
 CC				=	c++
 
-FLAGS			=	 -Wall -Wextra -Werror -std=c++98
+FLAGS			=	-Wall -Wextra -Werror -std=c++98
 
 SRC				=	main.cpp
+
+TMPLS			=	Array.tpp
 
 OBJ				=	$(SRC:.cpp=.o)
 OBJ_DIR			:=	./objects/
