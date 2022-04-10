@@ -1,34 +1,30 @@
 NAME			=	span
 
-CC				=	c++
-
-FLAGS			=	-Wall -Wextra -Werror -std=c++98
-
-SRC				=	main.cpp	\
+SRCS			=	main.cpp	\
 					Span.cpp
 
-OBJ				=	$(SRC:.cpp=.o)
-OBJ_DIR			:=	./objects/
-OBJS			=	$(addprefix $(OBJ_DIR), $(OBJ))
+HEADER			=	Span.hpp
 
-all:				$(NAME)
+CC				=	c++
+RM				=	rm -rf
+FLAGS			=	-Wall -Wextra -Werror -std=c++98
 
-$(NAME):			$(OBJS)
-					@$(CC) -o $@ $^
-					@echo "\033[32m"Make DONE
+OBJS			=	$(SRCS:.cpp=.o)
 
-$(OBJ_DIR)%.o:		%.cpp
-					@mkdir -p $(OBJ_DIR)
-					@$(CC) -c $< -o $@
+%.o:			%.cpp $(HEADER)
+				$(CC) $(FLAGS) -c $< -o $@
+
+all:			$(NAME)
+
+$(NAME):		$(OBJS) $(HEADER)
+				$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-					@rm -rf $(OBJ_DIR)
-					@echo "\033[32m"clean DONE
+				$(RM) $(OBJS)
 
-fclean:				clean
-					@rm -rf $(NAME)
-					@echo "\033[32m"fclean DONE
+fclean:			clean
+				$(RM) $(NAME)
 
-re:					fclean all
+re:				fclean all
 
-.PHONY:				all fclean clean re
+.PHONY: 		all clean fclean re

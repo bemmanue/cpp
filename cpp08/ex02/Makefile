@@ -1,8 +1,8 @@
-NAME			=	easyfind
+NAME			=	mutantstack
 
 SRCS			=	main.cpp
 
-HEADER			=	easyfind.hpp
+HEADER			=	MutantStack.hpp
 
 CC				=	c++
 RM				=	rm -rf
